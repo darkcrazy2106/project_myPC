@@ -52,7 +52,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <!-- <a class="navbar-brand" href="index.html"><img src="img/logoApple2.png" alt="logo" class="light-logo2"></a> -->
+                    <!-- <a class="navbar-brand" href="index.html"><img src="img/myPC.png" alt="logo" class="light-logo2"></a> -->
                     
                 </div>
                 <!-- ============================================================== -->
@@ -60,7 +60,7 @@
                 <!-- ============================================================== -->
                 <div class="navbar-collapse">
                     <ul class="navbar-nav me-auto">
-                        <a class="navbar-brand" href="{{ route('admin.category.categories') }}"><img src="{{ asset('images/logoApple2.png') }}" alt="logo" class="light-logo2"></a>
+                        <a class="navbar-brand" href="{{ route('admin.category.categories') }}"></a>
                         {{-- <li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                         <li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars" aria-hidden="true"></i></a> </li>
                         <li class="nav-item">
@@ -191,7 +191,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer">
-            <i class="fa fa-copyright" aria-hidden="true"></i> 2022 Admid by Loi & Nhi
+            <i class="fa fa-copyright" aria-hidden="true"></i> 2023 Admin by Group 6
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->

@@ -59,7 +59,7 @@
 								<!-- Header Top Left-->
 								<div class="header-top-left">
 									<div class="call-header">
-										<p><i class="fa fa-phone"></i><span> 0792761479 - 0842593661</span></p>
+										<p><i class="fa fa-phone"></i><span> 0949003635 - 01234097161</span></p>
 									</div>
 									{{-- <div class="header-login">
 										<a href="my-account.html">Log in</a>
@@ -124,7 +124,7 @@
 							<div class="col-lg-3 col-md-4 col-sm-4 col-6 order-lg-1">
 								<!-- Header Logo -->
 								<div class="header-logo">
-									<a href="{{ route('home') }}"><img src="images/logoApple2.png" alt="logo"></a>
+									<a href="{{ route('home') }}"><img src="images/myPC.png" alt="logo"></a>
 								</div>
 							</div>
 							<div class="col-lg-2  col-md-3 col-sm-4 col-5 order-lg-3">
@@ -331,7 +331,7 @@
 								<!-- End Category Menu -->
 							</div>
 							<div class="col-lg-9">
-								<!-- Manin Menu -->
+								<!-- Main Menu -->
 								<div class="main-menu d-none d-lg-block">
 									<nav>
 										<ul>
@@ -341,7 +341,7 @@
                                             <li><a href="{{ route('products') }}">All Products</a></li>
 										</ul>
 									</nav>
-								</div><!-- End Manin Menu -->
+								</div><!-- End Main Menu -->
 								<!-- Start Mobile Menu -->
 								<div class="mobile-menu d-block d-lg-none">
 									<nav>
@@ -988,7 +988,7 @@
                             </div>
                             <div class="footer-static-content">							
                                 <div class="contact-info">
-                                    <p class="phone">0792 761 479 - 0842 593 661</p>
+                                    <p class="phone">01234097161</p>
                                     <p class="email">hieu.huynh.cit20@eiu.edu.vn - phamgiahung@gmail.com</p>
                                     <p class="adress">Aptech Academy</p>
                                 </div>
@@ -1004,7 +1004,7 @@
 						<div class="col-md-6">
 							<!-- Copyright -->
 							<div class="copyright">
-								<p>&copy; 2022 <span> Apple Site </span> Made by Hieu & Hung</p>
+								<p>&copy; 2023 <span> myPC </span> Made by Group 6</p>
 							</div>						
 						</div>
 						<div class="col-md-6">

@@ -50,7 +50,7 @@
 								<!-- Header Top Left-->
 								<div class="header-top-left">
 									<div class="call-header">
-										<p><i class="fa fa-phone"></i><span> 0792761479 - 0842593661</span></p>
+										<p><i class="fa fa-phone"></i><span> 0949003635 - 01234097161</span></p>
 									</div>
 									{{-- <div class="header-login">
 										<a href="my-account.html">Log in</a>
@@ -115,7 +115,7 @@
 							<div class="col-lg-3 col-md-4 col-sm-4 col-6 order-lg-1">
 								<!-- Header Logo -->
 								<div class="header-logo">
-									<a href="{{ route('home') }}"><img src="images/logoApple2.png" alt="logo"></a>
+									<a href="{{ route('home') }}"><img src="images/myPC.png" alt="logo"></a>
 								</div>
 							</div>
 							<div class="col-lg-2  col-md-3 col-sm-4 col-5 order-lg-3">
@@ -407,7 +407,7 @@
 							<div class="col-lg-6 col-md-12 col-12">
 								<!-- Map area -->
 								<div class="map-area">
-										<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.8080684228!2d106.66398021472097!3d11.053012092134239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d1d7df763eaf%3A0xf4323e44f2867057!2zxJDhuqFpIGjhu41jIFF14buRYyB04bq_IE1p4buBbiDEkMO0bmc!5e0!3m2!1svi!2s!4v1650762285088!5m2!1svi!2s" width="1120" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+									<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3192813592636!2d106.66408561524108!3d10.786840061949954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed2392c44df%3A0xd2ecb62e0d050fe9!2zRlBUIEFwdGVjaCBIQ00gMSAtIEjhu4cgVGjhu5FuZyDEkMOgbyBU4bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIFThur8gKFNpbmNlIDE5OTkp!5e0!3m2!1svi!2s!4v1680012944251!5m2!1svi!2s" width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 								</div><!-- End Map area -->
 							</div>
 						</div>
@@ -418,13 +418,13 @@
 									<h3>Contact info</h3>
 									<ul>
 										<li>
-											<p> <i class="fa fa-map-marker" aria-hidden="true"></i> Eastern International University 3M38+6F3, Nam Kỳ Khởi Nghĩa, Định Hoà, Thủ Dầu Một, Bình Dương, Việt Nam</p>
+											<p> <i class="fa fa-map-marker" aria-hidden="true"></i> FPT Aptech 590 CMT8 </p>
 										</li>
 										<li>
-											<p><i class="fa fa-phone" aria-hidden="true"></i>	0792 761 479 - 0842 593 661</p>
+											<p><i class="fa fa-phone" aria-hidden="true"></i>	01234097161</p>
 										</li>
 										<li>
-											<p><i class="fa fa-envelope-o" aria-hidden="true"></i>	loi.duong.cit20@eiu.edu.vn - nhi.nguyenle.cit19@eiu.edu.vn</p>
+											<p><i class="fa fa-envelope-o" aria-hidden="true"></i>	trunghnts2110025@gmail.com</p>
 										</li>
 									</ul>
 								</div>
@@ -593,9 +593,9 @@
                             </div>
                             <div class="footer-static-content">							
                                 <div class="contact-info">
-                                    <p class="phone">0792 761 479 - 0842 593 661</p>
-                                    <p class="email">loi.duong.cit20@eiu.edu.vn - nhi.nguyenle.cit19@eiu.edu.vn</p>
-                                    <p class="adress">Eastern International University</p>
+                                    <p class="phone">01234097161</p>
+                                    <p class="email">trunghnts2110025@gmail.com</p>
+                                    <p class="adress">FPT Aptech</p>
                                 </div>
                             </div>
                         </div><!-- End Single Footer Static -->
@@ -609,8 +609,7 @@
 						<div class="col-md-6">
 							<!-- Copyright -->
 							<div class="copyright">
-								<p>&copy; 2022 <span> Apple Site </span> Made by Loi & Nhi</p>
-							</div>						
+								<p>&copy; <span> myPC site</span> MADE BY GROUP 6</p>							</div>						
 						</div>
 						<div class="col-md-6">
 							<!-- Footer Payment -->
