@@ -466,7 +466,7 @@
 										<a class="list-group-item" href="{{ route('userProfile') }}" style="color: #ec4445"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; My profile</a>
 										<a class="list-group-item" href="{{ route('change-password') }}"><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp; Change Password</a>
 										<a class="list-group-item" href="{{ route('user-orders') }}"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Orders</a>
-										<a class="list-group-item" href="{{ route('user-vouchers') }}"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; Vouchers</a>
+										
 									</div>
 								</div>
 							</div>
