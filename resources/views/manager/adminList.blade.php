@@ -18,7 +18,7 @@
 <body class="skin-default fixed-layout">
     <div id="main-wrapper">
         <header class="topbar">
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark" style="color: black">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header">
                     <!-- <a class="navbar-brand" href="index.html"><img src="img/myPC.png" alt="logo" class="light-logo2"></a> -->
                     

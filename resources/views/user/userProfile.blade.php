@@ -739,5 +739,5 @@
 		</script>
     </body>
 
-<!-- Mirrored from template.hasthemes.com/selphy/selphy/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Apr 2022 02:05:03 GMT -->
+
 </html>
