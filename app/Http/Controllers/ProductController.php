@@ -18,62 +18,73 @@ use App\Models\Feedback;
 
 
 class ProductController extends Controller
-{   
-    public function __construct() {
+{
+    public function __construct()
+    {
     }
-    public function index() {
+    public function index()
+    {
         $blogs = new blog();
+        $category = new Category();
+        $categoriesList = $category->getAllCategories();
         $blogList = $blogs->getAllBlog();
         $productList = DB::table('products')->select('*')
-        ->join('categories', 'products.category_id', '=', 'categories.category_id')
-        ->orderBy('id','DESC')->get();
+            ->join('categories', 'products.category_id', '=', 'categories.category_id')
+            ->orderBy('id', 'DESC')->get();
         return view('user.index')
-        ->with (compact('productList'))
-        ->with(compact('blogList'));
+            ->with(compact('productList'))
+            ->with(compact('categoriesList'))
+            ->with(compact('blogList'));
     }
-    public function showProductList() {
+    public function showProductList()
+    {
         $products = new Product();
         $productsList = $products->getAllProduct();
-        return view ('user.productList', compact('productsList'));
+        return view('user.productList', compact('productsList'));
     }
 
-    public function searchProducts($category) {
+    public function searchProducts($category)
+    {
         $products = new Product();
         $productsList = $products->getProductByCategory($category);
-        return view ('user.search', compact('productsList', 'category'));
+        return view('user.search', compact('productsList', 'category'));
     }
-    
-    public function showContact() {
+
+    public function showContact()
+    {
         return view('user.contact');
     }
-    public function admin() {
-        if(Auth::guard('admin')->check()){
+    public function admin()
+    {
+        if (Auth::guard('admin')->check()) {
             $products = new Product();
             $productsList = $products->getAllProduct();
             // dd(Auth::guard('admin')->check());
-            return view ('manager.product', compact('productsList'));
-        }else{
+            return view('manager.product', compact('productsList'));
+        } else {
             // dd(Auth::guard('admin')->check());
-            return redirect()->route('admin.adminLoginForm')->with('msg','Login with admin account first, please !!!');
+            return redirect()->route('admin.adminLoginForm')->with('msg', 'Login with admin account first, please !!!');
         }
     }
-    public function showAddForm() {
-        if(Auth::guard('admin')->check()){
+    public function showAddForm()
+    {
+        if (Auth::guard('admin')->check()) {
             $categories = new Category();
             $categoriesList = $categories->getAllCategories();
             return view('manager.add', compact('categoriesList'));
-        }else{
-            return redirect()->route('admin.adminLoginForm')->with('msg','Login with admin account first, please !!!');
+        } else {
+            return redirect()->route('admin.adminLoginForm')->with('msg', 'Login with admin account first, please !!!');
         }
     }
-    public function postAdd(Request $request) {
-        if(Auth::guard('admin')->check()){
+    public function postAdd(Request $request)
+    {
+        if (Auth::guard('admin')->check()) {
             $products = new Product();
             $request->validate([
-                'product_code'=>'required||unique:products',
+                'product_code' => 'required||unique:products',
                 'name' => ' required ||unique:products',
                 'price' => 'required',
-                'description' =>'required',
+                'description' => 'required',
                 'img_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'category_id' => 'required',
                 'quantity' => 'required'
@@ -88,9 +99,9 @@ class ProductController extends Controller
                 'quantity.required' => 'Quantity cannot blank',
                 'img_path.required' => 'Choose The Images, Please'
             ]);
-            $file= $request->img_path;
-            $filename= $file->getClientOriginalName();
-            $file-> move(public_path('images'), $filename);
+            $file = $request->img_path;
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
             $dateInsert = [
                 $request->product_code,
                 $request->name,
@@ -103,54 +114,56 @@ class ProductController extends Controller
             ];
             $productsList = $products->addProduct($dateInsert);
             return redirect()->route('admin.index')->with('msg', 'Add successful');
-        }else{
-            return redirect()->route('admin.adminLoginForm')->with('msg','Login with admin account first, please !!!');
+        } else {
+            return redirect()->route('admin.adminLoginForm')->with('msg', 'Login with admin account first, please !!!');
         }
     }
-    public function getEdit(Request $request, $id=0) {
-        if(Auth::guard('admin')->check()){
+    public function getEdit(Request $request, $id = 0)
+    {
+        if (Auth::guard('admin')->check()) {
             $categories = new Category();
             $categoriesList = $categories->getAllCategories();
             $products = new Product();
-            if (!empty($id)){
+            if (!empty($id)) {
                 $productDetail = $products->getProductByID($id);
-                if (!empty($productDetail[0])){
+                if (!empty($productDetail[0])) {
                     $request->session()->put('id', $id);
                     $productDetail = $productDetail[0];
                     // dd($productDetail);  
-                }else{
-                    return redirect()->route('admin.index')->with('msg','The Product is not available');
+                } else {
+                    return redirect()->route('admin.index')->with('msg', 'The Product is not available');
                 }
-            }else{
-                return redirect()->route('admin.index')->with('msg','The connection is not available');
+            } else {
+                return redirect()->route('admin.index')->with('msg', 'The connection is not available');
             }
             return view('manager.edit', compact('productDetail', 'categoriesList'));
-        }else{
-            return redirect()->route('admin.adminLoginForm')->with('msg','Login with admin account first, please !!!');
+        } else {
+            return redirect()->route('admin.adminLoginForm')->with('msg', 'Login with admin account first, please !!!');
         }
     }
-    public function postEdit(Request $request, $id=0) {
-        if(Auth::guard('admin')->check()){
+    public function postEdit(Request $request, $id = 0)
+    {
+        if (Auth::guard('admin')->check()) {
             $products = new Product();
             $id = session('id');
             $productDetail = $products->getProductByID($id);
-            if (empty($id)){
-                return back()->with('msg','The connection is not available');
+            if (empty($id)) {
+                return back()->with('msg', 'The connection is not available');
             }
             $request->validate([
-                
-                'product_code' =>'required',
-                'name' =>[
+
+                'product_code' => 'required',
+                'name' => [
                     ' required',
                     Rule::unique('products')->ignore($id)
                 ],
                 'price' => 'required',
-                'description' =>'required',
+                'description' => 'required',
                 // 'img_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'quantity' => 'required'
             ], [
-                
-                'product_code.required'=>'Product code cannot blank',
+
+                'product_code.required' => 'Product code cannot blank',
                 'name.required' => 'Name cannot blank',
                 'name.unique' => 'Product is available',
                 'price.required' => 'Price cannot blank',
@@ -158,9 +171,9 @@ class ProductController extends Controller
                 'quantity.required' => 'Quantity cannot blank',
                 // 'img_path.required' => 'Choose The Images, Please'
             ]);
-            $file= $request->img_path;
+            $file = $request->img_path;
             $oldFile = $productDetail[0]->img_path;
-            if(empty($file)){
+            if (empty($file)) {
                 // $filename = $tempFile;
                 $dataUpdate = [
                     // $request->id,
@@ -175,13 +188,13 @@ class ProductController extends Controller
                 ];
                 // dd($dataUpdate);
                 $products->updateProductWithoutImg($dataUpdate, $id);
-                return back()->with('msg','Update Success');
-            }else{
-                if(File::exists("images/$oldFile")){
+                return back()->with('msg', 'Update Success');
+            } else {
+                if (File::exists("images/$oldFile")) {
                     File::delete("images/$oldFile");
                 }
-                $filename= $file->getClientOriginalName();
-                $file-> move(public_path('images'), $filename);
+                $filename = $file->getClientOriginalName();
+                $file->move(public_path('images'), $filename);
                 $dataUpdate = [
                     // $request->id,
                     $request->product_code,
@@ -195,39 +208,41 @@ class ProductController extends Controller
                 ];
                 // dd($dataUpdate);
                 $products->updateProduct($dataUpdate, $id);
-                return back()->with('msg','Update Success');
+                return back()->with('msg', 'Update Success');
             }
-        }else{
-            return redirect()->route('admin.adminLoginForm')->with('msg','Login with admin account first, please !!!');
+        } else {
+            return redirect()->route('admin.adminLoginForm')->with('msg', 'Login with admin account first, please !!!');
         }
     }
-    public function delete($id=0) {
-        if(Auth::guard('admin')->check()){
+    public function delete($id = 0)
+    {
+        if (Auth::guard('admin')->check()) {
             $products = new Product();
             $productDetail = $products->getProductByID($id);
-            if (!empty($id)){
+            if (!empty($id)) {
                 $productDetail = $products->getProductByID($id);
-                if (!empty($productDetail[0])){
+                if (!empty($productDetail[0])) {
                     $path = $productDetail[0]->img_path;
                     File::delete("images/$path");
                     $deleteStatus = $products->deleteProductByID($id);
                     if ($deleteStatus) {
                         $msg = 'Deleted Successful';
-                    }else {
+                    } else {
                         $msg = 'Error';
                     }
-                }else{
+                } else {
                     $msg = 'The Product is not available';
                 }
-            }else{
-            $msg = 'The connection is not available';
+            } else {
+                $msg = 'The connection is not available';
             }
-            return redirect()->route('admin.index')->with('msg',$msg);
-        }else{
-            return redirect()->route('admin.adminLoginForm')->with('msg','Login with admin account first, please !!!');
+            return redirect()->route('admin.index')->with('msg', $msg);
+        } else {
+            return redirect()->route('admin.adminLoginForm')->with('msg', 'Login with admin account first, please !!!');
         }
     }
-    public function searchProductsByID(Request $request, $id){
+    public function searchProductsByID(Request $request, $id)
+    {
         $request->session()->forget('productDetail');
         $products = new Product();
         $productDetail = $products->getProductByID($id);

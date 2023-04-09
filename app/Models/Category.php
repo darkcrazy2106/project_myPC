@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 class Category extends Model
-{   
-    public function getAllCategories(){
+{
+    public function getAllCategories()
+    {
         $categories = DB::select('SELECT * FROM categories ORDER BY category_id ASC');
         return $categories;
     }
+
     protected $table = 'categories';
     protected $fillable = [
-        'category_id','category_name','category_description',
+        'category_id', 'category_name', 'category_description',
     ];
 }
