@@ -28,6 +28,10 @@ class blog extends Model
     public function deleteBlogByID($id) {
         return DB::delete('DELETE FROM blogs WHERE id = ?', [$id]);
     }
+    public function feedback()
+    {
+        return $this->hasMany(Feedback::class, 'blog_id');
+    }
     public $timestamps = false;
     protected $table = 'blogs';
     protected $fillable = [

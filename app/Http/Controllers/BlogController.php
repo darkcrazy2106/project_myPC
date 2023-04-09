@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-
+use App\Models\Feedback;
 
 
 class BlogController extends Controller
@@ -153,11 +153,14 @@ class BlogController extends Controller
             return redirect()->route('admin.adminLoginForm')->with('msg','Login with admin account first, please !!!');
         }
     }
+
     public function searchBlogByID(Request $request, $id){
         $request->session()->forget('blogDetails');
         $blog = new blog();
         $blogDetail = $blog->getBlogByID($id);
+        $comments = Feedback::where('blog_id', $id)->get();
         $request->session()->put('blogDetails', $blogDetail);
-        return view('user.blogDetails');
+        $average_rating = Feedback::where('blog_id', $id)->avg('rating');
+        return view('user.blogDetails',compact('blogDetail', 'comments'));
     }
 }

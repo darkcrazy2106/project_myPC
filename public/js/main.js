@@ -486,6 +486,58 @@
   });
 
 /*----------------------------
+ Rating
+------------------------------ */
+
+$(document).ready(function() {
+	var ratingInput = $('input[name="rating"]');
+
+	$('.rating i').on('mouseenter', function() {
+		$(this).prevAll().addBack().addClass('active');
+		$(this).nextAll().removeClass('active');
+	});
+
+	$('.rating i').on('mouseleave', function() {
+		var activeRating = $('.rating i.active').last().data('rating') || 0;
+		ratingInput.val(activeRating);
+		$('.rating i').removeClass('active');
+		$('.rating i').each(function() {
+		  if ($(this).data('rating') <= activeRating) {
+			$(this).addClass('active');
+		  }
+		});
+	});
+
+	$('.rating i').on('click', function() {
+		var rating = $(this).data('rating');
+		ratingInput.val(rating);
+		$('.rating i').removeClass('active');
+		$('.rating i').each(function() {
+			if ($(this).data('rating') <= ratingInput.val()) {
+				$(this).addClass('active');
+			}
+		});
+	});
+
+	$('#feedback-form').submit(function(e) {
+		e.preventDefault();
+		var formData = $(this).serializeArray();
+		formData.push({name: 'rating', value: ratingInput.val()});
+		$.ajax({
+			type: 'POST',
+			url: $(this).attr('action'),
+			data: formData,
+			success: function(data) {
+				console.log(data);
+			},
+			error: function(xhr, status, error) {
+				console.log(xhr.responseText);
+			}
+		});
+	});
+});
+
+/*----------------------------
  Countdown
 ------------------------------ */
 	$('[data-countdown]').each(function() {

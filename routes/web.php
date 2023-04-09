@@ -9,7 +9,7 @@ use App\Http\Controllers\AddtoCartController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\AdminAccountsController;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\FeedbackController;
 use App\Models\UserAccount;
 
 /*
@@ -74,7 +74,6 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('/set-status-delivering/{id}',[OrdersController::class,'set_Status_Delivering_ByID'])->name('set-status-delivering');
         Route::get('/set-status-received/{id}',[OrdersController::class,'set_Status_Received_ByID'])->name('set-status-received');
     });
-    
 });
 
 Route::post('/add-cart-ajax',[AddtoCartController::class,'add_cart_ajax'])->name('add_cart_ajax');
@@ -111,6 +110,10 @@ Route::get('/cancelOrder/{id}',[UserAccountController::class,'cancelOrderByID'])
 Route::get('/check-out', [OrdersController::class, 'showCheckOutForm'])->name('checkout');
 Route::post('/confirm-checkout', [OrdersController::class, 'confirm_checkout'])->name('confirm-checkout');
 Route::get('/confirm-success', [OrdersController::class, 'confirm_success'])->name('confirm-success');
+
+Route::post('/feedback/blogid', [FeedbackController::class, 'storeByBlogID'])->name('feedback.storeByBlogID');
+Route::post('/feedback/productid', [FeedbackController::class, 'storeByProductID'])->name('feedback.storeByProductID');
+
 
 
 

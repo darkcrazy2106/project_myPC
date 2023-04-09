@@ -490,21 +490,23 @@
                                 <div class="single-product-content-view">
                                     <div class="product-info">
                                         <h1>{{$productDetail[0]->name}}</h1>
-                                        <div class="ratings">
-                                            <div class="rating-box">  
-                                                <div class="rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>  
-                                            </div>
-                                        </div>
+                                        <div class="ProductRatings">
+											<div class="ProductRating-box">
+											  <div class="ProductRating">
+												@for ($i = 1; $i <= 5; $i++)
+												  @if ($i <= round($average_rating))
+													<i class="fa fa-star active" data-rating="{{ $i }}"></i>
+												  @else
+													<i class="fa fa-star" data-rating="{{ $i }}"></i>
+												  @endif
+												@endfor
+											  </div>
+											</div>
+										</div>																		  
                                         <p class="rating-links">
-                                            <a href="#">999 Review(s)</a>
+                                            <a href="#">{{ count($comments) }} Review(s)</a>
                                             <span class="separator">|</span>
-                                            <a href="#" class="add-to-review">Add Your Review</a>
+                                            <a href="#Feedback" class="add-to-review">Add Your Review</a>
                                         </p>
                                         <p class="availability in-stock">Availability: <span>In stock</span></p>
                                         <div class="quick-desc">
@@ -523,27 +525,6 @@
                                                 <li class="email-friend" title="Email to a Friend"><a href="#"><i class="fa fa-envelope"></i></a></li>
                                             </ul>
                                         </div>
-                                        {{-- <div class="product-select product-color">
-                                            <h2>Color <sup>*</sup></h2>
-                                            <select>
-                                                <option>--Please Select--</option>
-                                                <option>Gold +$50.00</option>
-                                                <option>Black +$20.00</option>
-                                                <option>White +$20.00</option>
-                                            </select>
-                                        </div>
-                                        <div class="product-select product-size">
-                                            <h2>Storage <sup>*</sup></h2>
-                                            <select>
-                                                <option>--Please Select--</option>
-                                                <option>256G +$199.00</option>
-                                                <option>512G +$299.00</option>
-                                                <option>1T +$399.00</option>
-                                            </select>
-                                        </div> --}}
-                                        {{-- <div class="price-box">
-                                            <p class="price"><span class="special-price"><span class="amount">Final Price</span></span></p>
-                                        </div> --}}
                                         <div class="quick-add-to-cart">
                                             <form method="post" class="cart">
 												@csrf
@@ -554,27 +535,12 @@
 												<input type="hidden" value="{{$productDetail[0]->price}}" class="cart_product_price_{{ $productDetail[0]->id}}">
 												<input type="hidden" value="{{$productDetail[0]->quantity}}" class="cart_product_storage_{{ $productDetail[0]->id}}">
 												<input type="hidden" value="1" class="cart_product_quantity_{{ $productDetail[0]->id}}">
-                                                {{-- <div class="qty-button"> 	 --}}
-                                                    {{-- <input type="number"  class="cart_product_quantity_{{ $productDetail[0]->id}}"  max="{{$productDetail[0]->quantity}}" min="1" name="qty" style="height: 37px; font-size: 16px"> --}}
-													{{-- <input type="text" class="input-text qty cart_product_quantity_{{ $productDetail[0]->id}}" title="Qty" value="1" maxlength="12" id="qty" name="qty" max="{{$productDetail[0]->quantity}}" min="1">
-													
-													<div class="box-icon button-plus"> 
-														<input type="button" class="qty-increase " onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" value="+">
-													</div>	
-													<div class="box-icon button-minus">
-														<input type="button" class="qty-decrease" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) qty_el.value--;return false;" value="-">
-													</div> --}}
-                                                {{-- </div> --}}
                                                 <div class="product-actions">
                                                     <button class="button btn-cart add-to-cart" data-id="{{ $productDetail[0]->id}}" title="Add to Cart" type="button"><i class="fa fa-shopping-cart">&nbsp;</i><span>Add to Cart</span></button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div><!-- End Add to Box -->
-                                    <!-- Social Shiring -->
-                                    <!-- <div class="social-sharing">
-                                        <a href="#"><img src="assets/images/icon/social.webp" alt="social"></a>
-                                    </div> -->
                                     <!-- End Social Shiring -->
                                 </div><!-- End Single Product Content View -->
                             </div>
@@ -598,129 +564,6 @@
                                         <div class="tab-pane active" id="product-des">
                                             {!! $productDetail[0]->description  !!}
                                         </div>
-                                        {{-- <div class="tab-pane" id="product-rev">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="product-rev-left">
-                                                        <p class="product-action">
-                                                            <a href="https://bootexperts.com/">BootExperts</a> <b>Review by</b> <span>BootExperts</span>
-                                                        </p>
-                                                        <div class="product-ratting">
-                                                            <table class="">
-                                                                <tr>
-                                                                    <td>Quality</td>
-                                                                    <td>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Price</td>
-                                                                    <td>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Value</td>
-                                                                    <td>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </div>
-                                                        <p>BootExperts <span class="posted">(Posted on 20/02/2021)</span></p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="product-rev-right">
-                                                        <h3>You're reviewing:</h3>
-                                                        <h3><b>How do you rate this product? <span>*</span></b></h3>
-                                                        <div class="product-rev-right-table table-responsive">
-                                                            <table>
-                                                                <thead>
-                                                                    <tr class="first last">
-                                                                        <th>&nbsp;</th>
-                                                                        <th><span class="nobr">1 star</span></th>
-                                                                        <th><span class="nobr">2 stars</span></th>
-                                                                        <th><span class="nobr">3 stars</span></th>
-                                                                        <th><span class="nobr">4 stars</span></th>
-                                                                        <th><span class="nobr">5 stars</span></th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <th>Quality</th>
-                                                                        <th><input type="radio" class="radio" name="ratings[1]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[1]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[1]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[1]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[1]"></th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>Price</th>
-                                                                        <th><input type="radio" class="radio" name="ratings[2]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[2]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[2]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[2]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[2]"></th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>Value</th>
-                                                                        <th><input type="radio" class="radio" name="ratings[3]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[3]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[3]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[3]"></th>
-                                                                        <th><input type="radio" class="radio" name="ratings[3]"></th>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="porduct-rev-right-form">
-                                                            <form action="#" class="form-horizontal product-form">
-                                                                <div class="form-goroup">
-                                                                    <label>Nickname <sup>*</sup></label>
-                                                                    <input type="text" class="form-control" required="required">
-                                                                </div>
-                                                                <div class="form-goroup">
-                                                                    <label>Summary of Your Review <sup>*</sup></label>
-                                                                    <input type="text" class="form-control" required="required">
-                                                                </div>
-                                                                <div class="form-goroup">
-                                                                    <label>Review <sup>*</sup></label>
-                                                                    <textarea class="form-control" rows="5" required="required"></textarea>
-                                                                </div>
-                                                                <div class="form-goroup form-group-button">
-                                                                    <button class="btn custom-button" value="submit">Submit Review</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="product-tag">
-                                            <!-- <h2>Other people marked this product with these tags:</h2>
-                                            <p class="product-action">
-                                                <a href="https://bootexperts.com/">Laptop </a> <span>(1)</span>
-                                            </p>
-                                            <form action="#" class="product-form">
-                                                <label>Add Your Tags:</label>
-                                                <input type="text" class="form-control" required="required">
-                                                <button class="btn custom-button" value="submit">Add Tags</button>
-                                            </form>
-                                            <p>Use spaces to separate tags. Use single quotes (') for phrases.</p> -->
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -748,6 +591,7 @@
                                             <!-- Product View Carousel -->
                                             <div id="related-products-carousel" class="owl-carousel custom-carousel">
                                                 @foreach ($relatedProduct as $key => $product)
+												<?php $related_average_rating = App\Models\Feedback::where('product_id', $product->id)->avg('rating'); ?>
                                                     <div class="singel-product single-product-col">
                                                         <div class="label-pro-sale">hot</div>
                                                         <div class="single-product-img">
@@ -764,17 +608,19 @@
 															<input type="hidden" value="1" class="cart_product_quantity_{{ $product->id}}">
 															<div class="single-product-content">
 																<h2 class="product-name"><a title="{{$product->name}}" href="{{ route('products-details', ['id'=>$product->id]) }}">{{$product->name}}</a></h2>
-																<div class="ratings">
-																	<div class="rating-box">  
-																		<div class="rating">
-																			<i class="fa fa-star"></i>
-																			<i class="fa fa-star"></i>
-																			<i class="fa fa-star"></i>
-																			<i class="fa fa-star"></i>
-																			<i class="fa fa-star"></i>
-																		</div>  
+																<div class="ProductRatings">
+																	<div class="ProductRating-box">
+																	  <div class="ProductRating">
+																		@for ($i = 1; $i <= 5; $i++)
+																		  @if ($i <= round($related_average_rating))
+																			<i class="fa fa-star active" data-rating="{{ $i }}"></i>
+																		  @else
+																			<i class="fa fa-star" data-rating="{{ $i }}"></i>
+																		  @endif
+																		@endfor
+																	  </div>
 																	</div>
-																</div>
+																</div>		
 																<div class="product-price">
 																	<p>{{number_format($product->price,2)}}</p>
 																</div>
@@ -798,7 +644,86 @@
                                         
                                     </div><!-- End Single Product Category -->
                                     
-
+									<div class="clear"></div>
+									<div class="head-title" id="Feedback">
+										<p>Comments Area</p>
+									</div>
+						<div class="single-post-comments">
+							<div class="comments-area">
+								<div class="comments-list">
+									<ul>
+										<li>
+											Comment
+											<br>
+											<div class="comments-details">
+												@foreach($comments as $comment)
+												<div class="comments-content-wrap">
+													<span>
+														<b><a href="#">{{ $comment->name }}</a></b>
+														<span class="post-time">{{ $comment->created_at->diffForHumans() }}</span>
+														<div class="ProductRatings">
+															<div class="ProductRating-box">
+															  <div class="ProductRating">
+																@for ($i = 1; $i <= 5; $i++)
+																  @if ($i <= round($comment->rating))
+																	<i class="fa fa-star active" data-rating="{{ $i }}"></i>
+																  @else
+																	<i class="fa fa-star" data-rating="{{ $i }}"></i>
+																  @endif
+																@endfor
+															  </div>
+															</div>
+														</div>
+														<a href="#">Reply</a>
+													</span>
+													<p>{{ $comment->comment }}</p>
+												</div>
+												@endforeach
+											</div>
+										</li>
+									</ul>
+								</div>										
+							</div>
+							<div class="comment-respond">
+								<h3 class="comment-reply-title">Leave a Reply </h3>
+								<span class="email-notes">Your email address will not be published. Required fields are marked *</span>
+								<form method="POST" action="{{ route('feedback.storeByProductID') }}">
+									@csrf
+									<div class="row">
+										<div class="col-md-4">
+											<p>Name *</p>
+											<input type="text" name="name" />
+										</div>
+										<div class="col-md-4">
+											<p>Email *</p>
+											<input type="email" name="email" />
+										</div>
+										<div class="col-md-4">
+											<p>Rating *</p>
+											<div class="ratings">
+												<div class="rating-box">
+												  <div class="rating">
+													<i class="fa fa-star" data-rating="1"></i>
+													<i class="fa fa-star" data-rating="2"></i>
+													<i class="fa fa-star" data-rating="3"></i>
+													<i class="fa fa-star" data-rating="4"></i>
+													<i class="fa fa-star" data-rating="5"></i>
+												  </div>
+												  <input type="hidden" name="rating" value="0" id="rating-input">
+												</div>
+											  </div>
+										</div>
+										<div class="col-md-12 comment-form-comment">
+											<p>Comment</p>
+											<textarea id="message" name="comment" cols="30" rows="10"></textarea>
+											<input type="hidden" name="product_id" value="{{$productDetail[0]->id}}" />
+											<input type="submit" value="Post" />
+										</div>
+									</div>
+								</form>
+							</div>
+												
+						</div><!-- single-blog end -->
                                     <!-- Single Product Category UpSell Product -->
                                     {{-- <div class="single-product-category upsell-products">
                                         <!-- Product Category Title-->

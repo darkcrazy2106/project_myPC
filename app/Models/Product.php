@@ -48,4 +48,8 @@ class Product extends Model
     public function deleteProductByID($id) {
         return DB::delete('DELETE FROM products WHERE id = ?', [$id]);
     }
+    public function feedback()
+    {
+        return $this->hasMany(Feedback::class, 'product_id');
+    }
 }

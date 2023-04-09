@@ -504,7 +504,7 @@
 										<a href="#">News</a>,
 										<a href="#">Tivi</a>,
 									</span>
-									<span><i class="fa fa-comments-o"></i> <a href="#">6 comments</a></span>
+									<span><i class="fa fa-comments-o"></i> <a href="#">{{ count($comments) }} comments</a></span>
 								</div>
 								<div class="entry-content">
 									<p>{!!$blogDetail[0]->content!!}</p>
@@ -537,49 +537,75 @@
 									<ul>
 										<li>
 											Comment
-											<!-- <div class="comments-details">
-												<div class="comments-list-img">
-													<img src="assets/images/blog/b18.webp" alt="post-author">
-												</div>
+											<br>
+											<div class="comments-details">
+												@foreach($comments as $comment)
 												<div class="comments-content-wrap">
 													<span>
-														<b><a href="#">admin</a></b>
-														Post author
-														<span class="post-time">October 6, 2014 at 1:38 am</span>
+														<b><a href="#">{{ $comment->name }}</a></b>
+														<span class="post-time">{{ $comment->created_at->diffForHumans() }}</span>
+														<div class="ProductRatings">
+															<div class="ProductRating-box">
+															  <div class="ProductRating">
+																@for ($i = 1; $i <= 5; $i++)
+																  @if ($i <= round($comment->rating))
+																	<i class="fa fa-star active" data-rating="{{ $i }}"></i>
+																  @else
+																	<i class="fa fa-star" data-rating="{{ $i }}"></i>
+																  @endif
+																@endfor
+															  </div>
+															</div>
+														</div>
 														<a href="#">Reply</a>
 													</span>
-													<p>just a nice post</p>
+													<p>{{ $comment->comment }}</p>
 												</div>
-											</div> -->
+												@endforeach
+											</div>
 										</li>
 									</ul>
-								</div>
+								</div>													
 							</div>
 							<div class="comment-respond">
 								<h3 class="comment-reply-title">Leave a Reply </h3>
 								<span class="email-notes">Your email address will not be published. Required fields are marked *</span>
-								<form action="#">
+								<form method="POST" action="{{ route('feedback.storeByBlogID') }}">
+									@csrf
 									<div class="row">
 										<div class="col-md-4">
 											<p>Name *</p>
-											<input type="text" />
+											<input type="text" name="name" />
 										</div>
 										<div class="col-md-4">
 											<p>Email *</p>
-											<input type="email" />
+											<input type="email" name="email" />
 										</div>
 										<div class="col-md-4">
-											<p>Website</p>
-											<input type="text" />
+											<p>Rating *</p>
+											<div class="ratings">
+												<div class="rating-box">
+												  <div class="rating">
+													<i class="fa fa-star" data-rating="1"></i>
+													<i class="fa fa-star" data-rating="2"></i>
+													<i class="fa fa-star" data-rating="3"></i>
+													<i class="fa fa-star" data-rating="4"></i>
+													<i class="fa fa-star" data-rating="5"></i>
+												  </div>
+												  <input type="hidden" name="rating" value="0" id="rating-input">
+												</div>
+											  </div>
 										</div>
 										<div class="col-md-12 comment-form-comment">
 											<p>Comment</p>
-											<textarea id="message" cols="30" rows="10"></textarea>
-											<input type="submit" value="Post Comment" />
+											<textarea id="message" name="comment" cols="30" rows="10"></textarea>
+											<input type="hidden" name="blog_id" value="{{$blogDetail[0]->id}}" />
+											<input type="submit" value="Post" />
 										</div>
 									</div>
 								</form>
-							</div>						
+							</div>
+												
 						</div><!-- single-blog end -->
 						
 					</div>

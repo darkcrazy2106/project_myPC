@@ -14,6 +14,7 @@ use App\Http\Controllers\View;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Feedback;
 
 
 class ProductController extends Controller
@@ -232,7 +233,8 @@ class ProductController extends Controller
         $productDetail = $products->getProductByID($id);
         $request->session()->put('productDetail', $productDetail);
         $relatedProduct = $products->getProductByCategory($productDetail[0]->category_name);
-        return view('user.productDetails')->with(compact('relatedProduct'));
-    }
-   
+        $comments = Feedback::where('product_id', $id)->get();
+        $average_rating = Feedback::where('product_id', $id)->avg('rating');
+        return view('user.productDetails')->with(compact('relatedProduct','comments', 'average_rating'));
+    }    
 }
