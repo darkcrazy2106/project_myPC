@@ -225,9 +225,59 @@
 								<div class="categorie-list">
 									<ul>
 										@foreach ($categoriesList as $category)
-										<li><a
+										{{-- <li><a
 												href="{{ route('search-products', [ 'category' => $category-> category_name]) }}">{{
-												$category -> category_name }}</a></li>
+												$category -> category_name }}</a></li> --}}
+
+										<li><a
+												href="{{ route('search-products', [ 'category' => $category-> category_name]) }}"><img
+													src="{{ asset('images/iconMac.png') }}" alt="icon"><i
+													class="fa fa-caret-right"></i>{{
+												$category -> category_name }}</a>
+											{{-- <ul class="mega-menu-ul">
+												<li>
+													<!--Mega Menu -->
+													<div class="mega-menu">
+														<div class="single-mega-menu">
+															<h2><a
+																	href="{{ route('search-products', [ 'category' => $category-> category_name]) }}">{{
+																	$category-> category_name }}</a></h2>
+															<a
+																href="{{ route('search-products', [ 'category' => $category-> category_name]) }}"><img
+																	src="{{ asset('images/logo/macbookAir.jpg') }}"
+																	alt="logo"></a>
+														</div>
+														<div class="single-mega-menu">
+															<h2><a
+																	href="{{ route('search-products', ['category'=>'mac']) }}">Macbook
+																	Pro 13</a></h2>
+															<a
+																href="{{ route('search-products', ['category'=>'mac']) }}"><img
+																	src="{{ asset('images/logo/macbook13.jpg') }}"
+																	alt="logo"></a>
+														</div>
+														<div class="single-mega-menu">
+															<h2><a
+																	href="{{ route('search-products', ['category'=>'mac']) }}">Macbook
+																	Pro 14</a></h2>
+															<a
+																href="{{ route('search-products', ['category'=>'mac']) }}"><img
+																	src="{{ asset('images/logo/macbookPro14.jpg') }}"
+																	alt="logo"></a>
+														</div>
+														<div class="single-mega-menu">
+															<h2><a
+																	href="{{ route('search-products', ['category'=>'mac']) }}">Macbook
+																	Pro 16</a></h2>
+															<a
+																href="{{ route('search-products', ['category'=>'mac']) }}"><img
+																	src="{{ asset('images/logo/macbookPro16.jpg') }}"
+																	alt="logo"></a>
+														</div>
+													</div>
+												</li>
+											</ul> --}}
+										</li>
 										@endforeach
 										{{-- <li><a href="{{ route('search-products', ['category'=>'mac']) }}"><img
 													src="{{ asset('images/iconMac.png') }}" alt="icon">Macbook<i

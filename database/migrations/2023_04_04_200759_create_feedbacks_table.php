@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateFeedbacksTable extends Migration
@@ -28,10 +29,9 @@ class CreateFeedbacksTable extends Migration
         // Add a constraint to limit the rating value between 0 and 5
         DB::statement("ALTER TABLE feedback MODIFY COLUMN rating tinyint(1) UNSIGNED NOT NULL DEFAULT 0 CHECK (rating >= 0 AND rating <= 5)");
     }
-    
+
     public function down()
     {
         Schema::dropIfExists('feedback');
     }
 }
-

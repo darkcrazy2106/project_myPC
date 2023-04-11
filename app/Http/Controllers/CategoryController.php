@@ -101,11 +101,11 @@ class CategoryController extends Controller
 
 
     // User
-    public function showAllCategoriesUser()
-    {
-        $category = new Category();
-        $categoriesList = $category->getAllCategories();
-        // return view('user.index')->with(compact('categoriesList'));
-        return $categoriesList;
-    }
+    // public function showAllCategoriesUser()
+    // {
+    //     $category = new Category();
+    //     $categoriesList = $category->getAllCategories();
+    //     // return view('user.index')->with(compact('categoriesList'));
+    //     return $categoriesList;
+    // }
 }

@@ -228,12 +228,12 @@
 								</div>
 								<div class="categorie-list">
 									<ul>
-										@foreach ($categoriesList as $category)
+										{{-- @foreach ($categoriesList as $category)
 										<li><a
 												href="{{ route('search-products', [ 'category' => $category-> category_name]) }}">{{
 												$category -> category_name }}</a></li>
-										@endforeach
-										{{-- <li><a href="{{ route('search-products', ['category'=>'mac']) }}"><img
+										@endforeach --}}
+										<li><a href="{{ route('search-products', ['category'=>'mac']) }}"><img
 													src="{{ asset('images/iconMac.png') }}" alt="icon">Macbook<i
 													class="fa fa-caret-right"></i></a>
 											<ul class="mega-menu-ul">
@@ -407,7 +407,7 @@
 													</div>
 												</li>
 											</ul>
-										</li> --}}
+										</li>
 										<!-- <li><a href="#"><img src="img/icon/m5.html" alt="icon">Camera & Photo</a></li>
 											<li><a href="#"><img src="img/icon/m6.html" alt="icon">Accessories</a></li> -->
 										<!-- Menu Accordion-->

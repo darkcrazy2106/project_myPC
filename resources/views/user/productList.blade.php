@@ -224,11 +224,11 @@
 								</div>
 								<div class="categorie-list">
 									<ul>
-										@foreach ($categoriesList as $category)
+										{{-- @foreach ($categoriesList as $category)
 										<li><a
 												href="{{ route('search-products', [ 'category' => $category-> category_name]) }}">{{
 												$category -> category_name }}</a></li>
-										@endforeach
+										@endforeach --}}
 										{{-- <li><a href="{{ route('search-products', ['category'=>'mac']) }}"><img
 													src="{{ asset('images/iconMac.png') }}" alt="icon">Macbook<i
 													class="fa fa-caret-right"></i></a>
