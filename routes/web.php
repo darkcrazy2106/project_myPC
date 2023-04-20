@@ -74,6 +74,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/set-status-delivering/{id}', [OrdersController::class, 'set_Status_Delivering_ByID'])->name('set-status-delivering');
         Route::get('/set-status-received/{id}', [OrdersController::class, 'set_Status_Received_ByID'])->name('set-status-received');
     });
+    Route::prefix('feedback')->name('feedback.')->group(function () {
+        Route::get('/blogfeedback', [FeedbackController::class, 'showBlogFeedbacks'])->name('blogfeedback');
+        Route::get('/productfeedback', [FeedbackController::class, 'showProductFeedbacks'])->name('productfeedback');
+        Route::get('/deletefeedback/{id}', [FeedbackController::class, 'deletefeedback'])->name('deletefeedback');
+    });
 });
 
 Route::post('/add-cart-ajax', [AddtoCartController::class, 'add_cart_ajax'])->name('add_cart_ajax');

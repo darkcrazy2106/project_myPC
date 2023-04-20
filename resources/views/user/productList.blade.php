@@ -656,18 +656,7 @@
 														class="cart_product_quantity_{{ $product->id}}">
 													<h2 class="product-name"><a title="{{ $product->name }}"
 															href="{{ route('products-details', ['id'=>$product->id]) }}">{{
-															$product->name }}</a></h2>
-													<div class="ratings">
-														<div class="rating-box">
-															<div class="rating">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-															</div>
-														</div>
-													</div>
+															$product->name }}</a></h2>													
 													<div class="product-price">
 														<p>{{number_format($product->price,2)}}</p>
 													</div>
@@ -734,17 +723,6 @@
 																href="{{ route('products-details', ['id'=>$product->id]) }}"
 																title="{{ $product->name }}">{{ $product->name }}</a>
 														</h2>
-														<div class="ratings">
-															<div class="rating-box">
-																<div class="rating">
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																	<i class="fa fa-star"></i>
-																</div>
-															</div>
-														</div>
 														<div class="product-price">
 															<p>{{number_format($product->price,2)}}</p>
 														</div>

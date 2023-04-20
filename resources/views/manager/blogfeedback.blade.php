@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from eliteadmin.themedesigner.in/demos/bt4/ecommerce/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Apr 2022 02:20:36 GMT -->
 <head>
     <meta charset="utf-8">
+    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png"> -->
     <title>Ecommerce Administration</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    {{-- <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"rel="stylesheet"> --}}
+    <!-- chartist CSS -->
+    <!-- <link href="css/morris.css" rel="stylesheet"> -->
+    <!-- <link href="css/ecommerce.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <!-- Custom CSS -->
     <link href="{{ asset('css/admin/customer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin/style.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     
 </head>
@@ -24,9 +29,18 @@
                     <!-- <a class="navbar-brand" href="index.html"><img src="img/myPC.png" alt="logo" class="light-logo2"></a> -->
                     
                 </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
                 <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                   
                     <ul class="navbar-nav me-auto">
-                        <a class="navbar-brand" href="{{ route('admin.index') }}"></a>
+                        <!-- Logo -->
+                        <a class="navbar-brand" href="{{ route('admin.blog.index') }}"></a>
+                    
                         {{-- <li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                         <li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars" aria-hidden="true"></i></a> </li>
                         <li class="nav-item">
@@ -43,11 +57,11 @@
                         <a href="{{ route('admin.adminLogout') }}" class="btn btn-sm btn-primary" style="width: 70px; height: 29px; font-size: 16px; padding: 0px">Log Out</a>
                     </ul>
                 </div>
-                
-
-                </div>
             </nav>
         </header>
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <aside class="left-sidebar">
             <div class="scroll-sidebar">
                 <nav class="sidebar-nav"> 
@@ -87,8 +101,15 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+
         <div class="page-wrapper">
             <div class="container-fluid">
+                <!-- Bread crumb and right sidebar toggle -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
                         <h4 class="text-themecolor">Dashboard</h4>
@@ -96,91 +117,103 @@
                     <div class="col-md-7 align-self-center text-end">
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb justify-content-end">
-                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home </a></li>
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                                 <li><i class="fa fa-chevron-right"></i></li>
-                                <li class="breadcrumb-item active"> Products List</li>
+                                <li class="breadcrumb-item active">Blog Feedbacks</li>
                             </ol>
+                            {{-- <button type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white"><i class="fa fa-plus-circle"></i> Create New</button> --}}
                         </div>
                     </div>
                 </div>
-    
-
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">All Products</h5>
-                                @if (session('msg'))
+                <div class="container">
+                   
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                            
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Blog Feedbacks</h5>
+                                    @php
+                                        $count=1;
+                                    @endphp
+                                    @if (session('msg'))
                                         <div class="alert alert-success">{{session('msg')}}</div>
-                                @endif
-                                <a href="{{ route('admin.add') }}" class="btn btn-sm btn-primary pull-left mb-3"><i class="fa fa-plus-circle"></i> Add New</a>
-                                <div class="table-responsive m-t-30">
-                                    <table class="table product-overview product-table">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Image</th>
-                                                <th>P.Code</th>
-                                                <th>Name</th>
-                                                {{-- <th>Description</th> --}}
-                                                <th>Category</th>
-                                                <th>Quantity</th>
-                                                <th>Price</th>
-                                                <th>Create At</th>
-                                                {{-- <th>Update At</th> --}}
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php
-                                                $count = 1;
-                                            @endphp
-                                            @foreach ($productsList as $product)
+                                    @endif
+                                    <div class="table-responsive m-t-30">
+                                        <table class="table product-overview">
+                                            <colgroup>
+                                                <col style="with:10px">
+                                            </colgroup>
+                                            <thead>
                                                 <tr>
-                                                    <td>{{ $count++}}</td>
-                                                    <td> <img src="images/{{ $product->img_path }}" alt="{{ $product->name }}"></td>
-                                                    <td>{{ $product->product_code}}</td>
-                                                    <td>{{ $product->name }}</td>
-                                                    {{-- <td>{{ $product->description}}</td> --}}
-                                                    <td>{{ $product->category_name}}</td>
-                                                    <td>{{ $product->quantity }}</td>
-                                                    <td>{{number_format($product->price,2)}}</td>
-                                                    <td>{{ date('d-m-Y', strtotime($product->created_at))}}</td>
-                                                    {{-- <td>{{ $product->updated_at}}</td> --}}
-                                                    <td>
+                                                    <th>ID</th>
+                                                    <th>Blog ID</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Comment</th>
+                                                    <th>Rating</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($feedbacklist as $feedback)
+                                                    <tr>
+                                                        <td>{{$count++}}</td>
+                                                        <td>{{$feedback ->blog_id}}</td>
+                                                        <td>{{$feedback ->name}}</td>
+                                                        <td>{{$feedback ->email}}</td>
+                                                        <td>{{$feedback ->comment}}</td>
+                                                        <td>
+                                                            <div class="ProductRatings">
+                                                            <div class="ProductRating-box">
+                                                              <div class="ProductRating">
+                                                                @for ($i = 1; $i <= 5; $i++)
+                                                                  @if ($i <= $feedback->rating)
+                                                                    <i class="fa fa-star active" data-rating="{{ $i }}"></i>
+                                                                  @else
+                                                                    <i class="fa fa-star" data-rating="{{ $i }}"></i>
+                                                                  @endif
+                                                                @endfor
+                                                              </div>
+                                                            </div>
+                                                        </div>			
+                                                    </td>
+                                                    <td style="width: 7%">
                                                         <div class="button-group">
-                                                            <button type="button" class="btn btn-warning edit" onclick="window.location.href = '{{ route('admin.edit', ['id'=>$product->id]) }}'">
-                                                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                                                            </button>
-                                                            <!-- Button trigger modal -->
-                                                            {{-- <li><a onclick="return confirm('Are you sure?')" href="{{ route('admin.delete', ['id'=>$product->id]) }}" class="btn btn-danger"><i class="fa fa-times"></i></a></li> --}}
-                                                            <button type="button" class="btn btn-primary delete" id="{{ $product->id }}">
+                                                            <button type="button" class="btn btn-primary delete" id="{{ $feedback->id}}">
                                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                            </button>
-                                                            
-                                                            
-                                                            
+                                                            </button>                                                         
                                                         </div>
                                                     </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    {{ $productsList->links('vendor.pagination.bootstrap-4')}}
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-                
+                <!-- End Bread crumb and right sidebar toggle -->   
             </div>
+            <!-- End Container fluid  -->
         </div>
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Footer -->
+        <!-- ============================================================== -->
+        
+        <!-- End footer -->
     </div>
     <footer class="footer">
-        <i class="fa fa-copyright" aria-hidden="true"></i> 2023 Admin by Group 6
+        <i class="fa fa-copyright" aria-hidden="true"></i> MADE BY GROUP 6 
     </footer>
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <script src="{{ asset('js/jquery-3.6.0.min.js') }} "></script>
@@ -189,11 +222,27 @@
     <script src="{{ asset('js/custom.min.js') }}"></script>
     <script src="{{ asset('js/jquery.sparkline.min.js') }}"></script>
     <script src="{{ asset('js/ecom-dashboard.js') }}"></script>
-    <script src="{{ asset('js/deleteconfirm.js') }}"></script>
     <script src="{{ asset('js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('js/waves.js') }}"></script>
     <script src="{{ asset('js/sticky-kit.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert.js') }}"> </script>
 
+    <script>
+        $(".delete").on("click", function(){
+            var _ID = $(this).attr('id');
+            swal({
+                title: "Are you sure?",
+                text: "Your will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes, Delete it!",
+                closeOnConfirm: false
+            },
+            function(){
+                window.location.href = 'deletefeedback/'+_ID;
+            });
+        });
+    </script>
 </body>
 </html>

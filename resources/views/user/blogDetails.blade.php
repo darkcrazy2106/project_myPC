@@ -557,7 +557,6 @@
 															  </div>
 															</div>
 														</div>
-														<a href="#">Reply</a>
 													</span>
 													<p>{{ $comment->comment }}</p>
 												</div>

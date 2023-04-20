@@ -124,13 +124,13 @@
                     <ul id="sidebarnav">
                         <li class="nav-small-cap"><b>--- Products Management</b></li>
                         <li> 
-                            <a class="has-arrow waves-effect waves-dark active" href="{{ route('admin.index') }}" aria-expanded="false"></i><span class="hide-menu">All Product</span></a>
+                            <a class="has-arrow waves-effect waves-dark " href="{{ route('admin.index') }}" aria-expanded="false"></i><span class="hide-menu">All Product</span></a>
                             <a class="has-arrow waves-effect waves-dark " href="{{ route('admin.add') }}" aria-expanded="false"></i><span class="hide-menu">Add New Product</span></a>
                             <a class="has-arrow waves-effect waves-dark " href="{{ route('admin.category.categories') }}" aria-expanded="false"></i><span class="hide-menu">Categories</span></a>
                         </li>
                         <li class="nav-small-cap"><b>--- Blogs Management</b></li>
                         <li> 
-                            <a class="has-arrow waves-effect waves-dark" href="{{ route('admin.blog.index') }}" aria-expanded="false"><span class="hide-menu">All Blog</span></a>
+                            <a class="has-arrow waves-effect waves-dark active" href="{{ route('admin.blog.index') }}" aria-expanded="false"><span class="hide-menu">All Blog</span></a>
                             <a class="has-arrow waves-effect waves-dark" href="{{ route('admin.blog.add') }}" aria-expanded="false"><span class="hide-menu">Add New Blog</span></a>
 
                         </li>
@@ -146,9 +146,16 @@
                         <li> 
                             <a class="has-arrow waves-effect waves-dark" href="{{ route('admin.order.index') }}" aria-expanded="false"><span class="hide-menu">All Orders</span></a>
                         </li>
+                        <li class="nav-small-cap"><b>--- Feedbacks Management</b></li>
+                        <li> 
+                            <a class="has-arrow waves-effect waves-dark" href="{{ route('admin.feedback.blogfeedback') }}" aria-expanded="false"><span class="hide-menu">Blog Feedbacks</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="{{ route('admin.feedback.productfeedback') }}" aria-expanded="false"><span class="hide-menu">Product Feedbacks</span></a>
+                        </li>  
                     </ul>
                 </nav> 
+                <!-- End Sidebar navigation -->
             </div>
+            <!-- End Sidebar scroll-->
         </aside>
         <div class="page-wrapper">
             <!-- ============================================================== -->
