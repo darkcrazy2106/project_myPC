@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon icon -->
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png"> -->
-    <title>Ecommerce Administration</title>
+    <title>Administration</title>
     <!-- chartist CSS -->
     <!-- <link href="css/morris.css" rel="stylesheet"> -->
     <!-- <link href="css/ecommerce.css" rel="stylesheet"> -->
@@ -60,9 +60,9 @@
     tinymce.init({
         selector: '#mytextarea',
         plugins: [
-        'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+        'advlist','autolink',
         'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
-        'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+        'fullscreen','insertdatetime','media','table','help','wordcount'
         ],
         toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
         'alignleft aligncenter alignright alignjustify | ' +
@@ -125,12 +125,12 @@
                         <li class="nav-small-cap"><b>--- Products Management</b></li>
                         <li> 
                             <a class="has-arrow waves-effect waves-dark " href="{{ route('admin.index') }}" aria-expanded="false"></i><span class="hide-menu">All Product</span></a>
-                            <a class="has-arrow waves-effect waves-dark " href="{{ route('admin.add') }}" aria-expanded="false"></i><span class="hide-menu">Add New Product</span></a>
+                            <a class="has-arrow waves-effect waves-dark active " href="{{ route('admin.add') }}" aria-expanded="false"></i><span class="hide-menu">Add New Product</span></a>
                             <a class="has-arrow waves-effect waves-dark " href="{{ route('admin.category.categories') }}" aria-expanded="false"></i><span class="hide-menu">Categories</span></a>
                         </li>
                         <li class="nav-small-cap"><b>--- Blogs Management</b></li>
                         <li> 
-                            <a class="has-arrow waves-effect waves-dark active" href="{{ route('admin.blog.index') }}" aria-expanded="false"><span class="hide-menu">All Blog</span></a>
+                            <a class="has-arrow waves-effect waves-dark " href="{{ route('admin.blog.index') }}" aria-expanded="false"><span class="hide-menu">All Blog</span></a>
                             <a class="has-arrow waves-effect waves-dark" href="{{ route('admin.blog.add') }}" aria-expanded="false"><span class="hide-menu">Add New Blog</span></a>
 
                         </li>

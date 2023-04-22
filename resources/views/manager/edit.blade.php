@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon icon -->
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png"> -->
-    <title>Ecommerce Administration</title>
+    <title>Administration</title>
     <!-- chartist CSS -->
     <!-- <link href="css/morris.css" rel="stylesheet"> -->
     <!-- <link href="css/ecommerce.css" rel="stylesheet"> -->
@@ -59,9 +59,9 @@
     tinymce.init({
         selector: '#mytextarea',
         plugins: [
-        'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+        'advlist','autolink',
         'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
-        'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+        'fullscreen','insertdatetime','media','table','help','wordcount'
         ],
         toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
         'alignleft aligncenter alignright alignjustify | ' +

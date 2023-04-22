@@ -892,8 +892,8 @@
 					</div>
 					<div class="single-product-category">
 						<!-- Product Category Title-->
-						<ul class="nav nav-tabs" role="tablist">
-							<li><a href="{{ route('search-products', ['category'=>'ram']) }}">RAM</a></li>
+						{{-- <ul class="nav nav-tabs" role="tablist">
+							<li><a href="{{ route('search-products', ['category'=>'ram']) }}">RAM</a></li> --}}
 							<!-- href="#viewed" -->
 						</ul>
 						<!-- Product View -->

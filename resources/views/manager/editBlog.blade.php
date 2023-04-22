@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon icon -->
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png"> -->
-    <title>Ecommerce Administration</title>
+    <title>Administration</title>
     <!-- chartist CSS -->
     <!-- <link href="css/morris.css" rel="stylesheet"> -->
     <!-- <link href="css/ecommerce.css" rel="stylesheet"> -->
@@ -59,9 +59,9 @@
     tinymce.init({
         selector: '#mytextarea',
         plugins: [
-        'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+        'advlist','autolink',
         'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
-        'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+        'fullscreen','insertdatetime','media','table','help','wordcount'
         ],
         toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
         'alignleft aligncenter alignright alignjustify | ' +
@@ -93,7 +93,7 @@
                 <!-- ============================================================== -->
                 <div class="navbar-collapse">
                     <ul class="navbar-nav me-auto">
-                        <a class="navbar-brand" href="{{ route('admin.blog.index') }}"><img src="{{ asset('images/myPC.png') }}" alt="logo" class="light-logo2"></a>
+                        <a class="navbar-brand" href="{{ route('admin.blog.index') }}"></a>
                         {{-- <li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                         <li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars" aria-hidden="true"></i></a> </li>
                         <li class="nav-item">

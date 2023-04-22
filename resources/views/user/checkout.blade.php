@@ -452,6 +452,13 @@
                                                             <label>Address<sup>*</sup></label>
                                                             <input type="text" required="required" name="customer_address" class="form-control" value="{{$user->address}}">
                                                         </div>
+                                                        <div class="form-goroup">
+                                                            <label>Payment<sup>*</sup></label> <br>
+                                                            <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
+                                                            <label class="btn btn-primary" for="btn-check-2">COD</label>
+                                                            <input type="checkbox" class="btn-check" id="btn-check-3" checked autocomplete="off" disabled>
+                                                            <label class="btn btn-primary" for="btn-check-3">ATM</label>
+                                                        </div>
                                                     </div>
                                                     <p class="reauired-fields floatright"><sup>*</sup> Required Fields</p>
                                                 </div>
