@@ -41,6 +41,18 @@ class BlogController extends Controller
     public function postAdd(Request $request) {
         if(Auth::guard('admin')->check()){
             $blogs = new blog();
+            $request->validate([
+                'title' => 'required||unique:blogs',
+                'author' => ' required',
+                'content' => 'required',
+                'img_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ], [
+                'title.required' => 'Title cannot blank',
+                'title.unique' => 'Title is available',
+                'content.required' => 'Content cannot blank',
+                'author.required' => 'Author cannot blank', 
+                'img_path.required' => 'Choose The Images, Please'
+            ]);
             $newBlog = $request->all();
             $blogs->title=$newBlog['title'];
             $blogs->author=$newBlog['author'];
