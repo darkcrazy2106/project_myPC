@@ -803,7 +803,7 @@
 					<div class="single-product-category">
 						<!-- Product Category Title-->
 						<ul class="nav nav-tabs" role="tablist">
-							<li><a href="{{ route('search-products', ['category'=>'keyboard']) }}">Keyboard</a></li>
+							<li><a href="{{ route('search-products', ['category'=>'Samsung']) }}">Samsung</a></li>
 							<!-- href="#viewed" -->
 						</ul>
 						<!-- Product View -->
@@ -811,44 +811,44 @@
 							<!-- Product View Carousel -->
 							<div id="tablet-carousel" class="owl-carousel custom-carousel">
 								<!-- Single Product -->
-								@foreach ($productList as $keyboard)
-								@if ($keyboard->category_name == 'keyboard')
+								@foreach ($productList as $Samsung)
+								@if ($Samsung->category_name == 'Samsung')
 								<div class="singel-product single-product-col">
 									<div class="label-pro-sale">hot</div>
 									<!-- Single Product Image -->
 									<div class="single-product-img">
-										<a href="{{ route('products-details', ['id'=>$keyboard->id]) }}"><img
-												src="images/{{$keyboard->img_path}}" alt="{{$keyboard->name}}"></a>
+										<a href="{{ route('products-details', ['id'=>$Samsung->id]) }}"><img
+												src="images/{{$Samsung->img_path}}" alt="{{$Samsung->name}}"></a>
 									</div>
 									<!-- Single Product Content -->
 									<form>
 										@csrf
-										<input type="hidden" value="{{$keyboard->id}}"
-											class="cart_product_id_{{ $keyboard->id}}">
-										<input type="hidden" value="{{$keyboard->product_code}}"
-											class="cart_product_code_{{ $keyboard->id}}">
-										<input type="hidden" value="{{$keyboard->name}}"
-											class="cart_product_name_{{ $keyboard->id}}">
-										<input type="hidden" value="{{$keyboard->img_path}}"
-											class="cart_product_img_{{ $keyboard->id}}">
-										<input type="hidden" value="{{$keyboard->price}}"
-											class="cart_product_price_{{ $keyboard->id}}">
-										<input type="hidden" value="{{$keyboard->quantity}}"
-											class="cart_product_storage_{{ $keyboard->id}}">
-										<input type="hidden" value="1" class="cart_product_quantity_{{ $keyboard->id}}">
+										<input type="hidden" value="{{$Samsung->id}}"
+											class="cart_product_id_{{ $Samsung->id}}">
+										<input type="hidden" value="{{$Samsung->product_code}}"
+											class="cart_product_code_{{ $Samsung->id}}">
+										<input type="hidden" value="{{$Samsung->name}}"
+											class="cart_product_name_{{ $Samsung->id}}">
+										<input type="hidden" value="{{$Samsung->img_path}}"
+											class="cart_product_img_{{ $Samsung->id}}">
+										<input type="hidden" value="{{$Samsung->price}}"
+											class="cart_product_price_{{ $Samsung->id}}">
+										<input type="hidden" value="{{$Samsung->quantity}}"
+											class="cart_product_storage_{{ $Samsung->id}}">
+										<input type="hidden" value="1" class="cart_product_quantity_{{ $Samsung->id}}">
 										<div class="single-product-content">
-											<h2 class="product-name"><a title="{{$keyboard->name}}"
-													href="{{ route('products-details', ['id'=>$keyboard->id]) }}">
-													{{$keyboard->name}}</a></h2>
+											<h2 class="product-name"><a title="{{$Samsung->name}}"
+													href="{{ route('products-details', ['id'=>$Samsung->id]) }}">
+													{{$Samsung->name}}</a></h2>
 											<div class="product-price">
 												<p>
-													<span>$2099</span>
-													${{number_format($keyboard->price,2)}}
+													
+													${{number_format($Samsung->price,2)}}
 												</p>
 											</div>
 											<!-- Single Product Actions -->
 											<div class="product-actions">
-												<button class="button btn-cart add-to-cart" data-id="{{ $keyboard->id}}"
+												<button class="button btn-cart add-to-cart" data-id="{{ $Samsung->id}}"
 													name="add-to-cart" title="Add to Cart" type="button"><i
 														class="fa fa-shopping-cart">&nbsp;</i><span>Add to
 														Cart</span></button>
@@ -931,7 +931,7 @@
 													{{$ram->name}}</a></h2>
 											<div class="product-price">
 												<p>
-													<span>$2099</span>
+													
 													${{number_format($ram->price,2)}}
 												</p>
 											</div>
