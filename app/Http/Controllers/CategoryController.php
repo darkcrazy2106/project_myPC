@@ -73,7 +73,18 @@ class CategoryController extends Controller
     public function createCategory(Request $request)
     {
         if (Auth::guard('admin')->check()) {
-            $newCategory = $request->all();
+            $request->validate([
+                'category_id' => 'required||unique:categories',
+                'category_name' => ' required ||unique:categories',
+                'category_description' => 'required',
+            ], [
+                'category_id.required' => 'Category code cannot blank',
+                'category_id.unique' => 'Category code is available',
+                'category_name.required' => 'Category name cannot blank',
+                'category_name.unique' => 'Category name is available',
+                'category_description.required' => 'Description cannot blank',
+            ]);
+            $newCategory = $request->all();         
             $newCategory_name = ($newCategory['category_name']);
             $newCategory_id = ($newCategory['category_id']);
 

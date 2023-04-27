@@ -160,7 +160,7 @@
                                 <div class="col-lg-6 col-12">
                                     <label for="">Category Code</label>
                                     <input type="text" class="form-control" name="category_id" placeholder="Category Code..." value="{{old('category_code')}}">
-                                    @error('category_code')
+                                    @error('category_id')
                                         <span style="color: red">{{$message}}</span>
                                     @enderror
                                 </div>
