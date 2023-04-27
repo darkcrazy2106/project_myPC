@@ -692,10 +692,16 @@
 										<div class="col-md-4">
 											<p>Name *</p>
 											<input type="text" name="name" />
+											@error('name')
+												<span style="color: red">{{$message}}</span>
+											@enderror
 										</div>
 										<div class="col-md-4">
 											<p>Email *</p>
 											<input type="email" name="email" />
+											@error('email')
+												<span style="color: red">{{$message}}</span>
+											@enderror
 										</div>
 										<div class="col-md-4">
 											<p>Rating *</p>
@@ -716,6 +722,9 @@
 											<p>Comment</p>
 											<textarea id="message" name="comment" cols="30" rows="10"></textarea>
 											<input type="hidden" name="product_id" value="{{$productDetail[0]->id}}" />
+											@error('comment')
+												<span style="color: red">{{$message}}</span>
+											@enderror
 											<input type="submit" value="Post" />
 										</div>
 									</div>
